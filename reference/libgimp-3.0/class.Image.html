@@ -1,0 +1,2426 @@
+<!--
+SPDX-FileCopyrightText: GIMP contributors
+
+SPDX-License-Identifier: GPL-3.0-or-later
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Gimp.Image</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta charset="utf-8" />
+
+  
+  <meta property="og:type" content="website"/>
+
+  
+  <meta property="og:image:width" content="256"/>
+  <meta property="og:image:height" content="256"/>
+  <meta property="og:image:secure_url" content="../images/gimp-devel-logo.png"/>
+  <meta property="og:image:alt" content="Gimp-3.0"/>
+  
+
+  
+  <meta property="og:title" content="Gimp.Image"/>
+  <meta property="og:description" content="Reference for Gimp.Image"/>
+  <meta name="twitter:title" content="Gimp.Image"/>
+  <meta name="twitter:description" content="Reference for Gimp.Image"/>
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+
+  
+  
+  
+  
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
+
+  
+
+  
+  <script src="urlmap.js"></script>
+  
+  
+  <script src="fzy.js"></script>
+  <script src="search.js"></script>
+  
+  <script src="main.js"></script>
+</head>
+
+<body>
+  <div id="body-wrapper" tabindex="-1">
+
+    <nav class="sidebar devhelp-hidden">
+      
+      <div class="section">
+        <img src="../images/gimp-devel-logo.png" class="logo"/>
+      </div>
+      
+      
+      <div class="search section">
+        <form id="search-form" autocomplete="off">
+          <input id="search-input" type="text" name="do-not-autocomplete" placeholder="Click, or press 's' to search" autocomplete="off"/>
+        </form>
+      </div>
+      
+      <div class="section namespace">
+        <h3><a href="index.html">Gimp</a></h3>
+        <p>API Version: 3.0</p>
+        
+        <p>Library Version: 3.0.8</p>
+        
+      </div>
+      
+<div class="section">
+  <h5>Type</h5>
+  <div class="links">
+    <a class="current" href="class.Image.html#description">Image</a>
+  </div>
+</div>
+
+
+<div class="section">
+  <h5>Constructors</h5>
+  <div class="links">
+  
+    <a class="ctor" href="ctor.Image.new.html">new</a>
+  
+    <a class="ctor" href="ctor.Image.new_with_precision.html">new_with_precision</a>
+  
+  </div>
+</div>
+
+
+
+<div class="section">
+  <h5>Functions</h5>
+  <div class="links">
+  
+    <a class="func" href="type_func.Image.convert_set_dither_matrix.html">convert_set_dither_matrix</a>
+  
+    <a class="func" href="type_func.Image.get_by_id.html">get_by_id</a>
+  
+    <a class="func" href="type_func.Image.id_is_valid.html">id_is_valid</a>
+  
+    <a class="func" href="type_func.Image.metadata_load_thumbnail.html">metadata_load_thumbnail</a>
+  
+  </div>
+</div>
+
+
+
+<div class="section">
+  <h5>Instance methods</h5>
+  <div class="links">
+  
+    <a class="method" href="method.Image.add_hguide.html">add_hguide</a>
+  
+    <a class="method" href="method.Image.add_sample_point.html">add_sample_point</a>
+  
+    <a class="method" href="method.Image.add_vguide.html">add_vguide</a>
+  
+    <a class="method" href="method.Image.attach_parasite.html">attach_parasite</a>
+  
+    <a class="method" href="method.Image.autocrop.html">autocrop</a>
+  
+    <a class="method" href="method.Image.autocrop_selected_layers.html">autocrop_selected_layers</a>
+  
+    <a class="method" href="method.Image.clean_all.html">clean_all</a>
+  
+    <a class="method" href="method.Image.convert_color_profile.html">convert_color_profile</a>
+  
+    <a class="method" href="method.Image.convert_color_profile_from_file.html">convert_color_profile_from_file</a>
+  
+    <a class="method" href="method.Image.convert_grayscale.html">convert_grayscale</a>
+  
+    <a class="method" href="method.Image.convert_indexed.html">convert_indexed</a>
+  
+    <a class="method" href="method.Image.convert_precision.html">convert_precision</a>
+  
+    <a class="method" href="method.Image.convert_rgb.html">convert_rgb</a>
+  
+    <a class="method" href="method.Image.crop.html">crop</a>
+  
+    <a class="method" href="method.Image.delete.html">delete</a>
+  
+    <a class="method" href="method.Image.delete_guide.html">delete_guide</a>
+  
+    <a class="method" href="method.Image.delete_sample_point.html">delete_sample_point</a>
+  
+    <a class="method" href="method.Image.detach_parasite.html">detach_parasite</a>
+  
+    <a class="method" href="method.Image.duplicate.html">duplicate</a>
+  
+    <a class="method" href="method.Image.export_path_to_file.html">export_path_to_file</a>
+  
+    <a class="method" href="method.Image.export_path_to_string.html">export_path_to_string</a>
+  
+    <a class="method" href="method.Image.find_next_guide.html">find_next_guide</a>
+  
+    <a class="method" href="method.Image.find_next_sample_point.html">find_next_sample_point</a>
+  
+    <a class="method" href="method.Image.flatten.html">flatten</a>
+  
+    <a class="method" href="method.Image.flip.html">flip</a>
+  
+    <a class="method" href="method.Image.floating_sel_attached_to.html">floating_sel_attached_to</a>
+  
+    <a class="method" href="method.Image.freeze_channels.html">freeze_channels</a>
+  
+    <a class="method" href="method.Image.freeze_layers.html">freeze_layers</a>
+  
+    <a class="method" href="method.Image.freeze_paths.html">freeze_paths</a>
+  
+    <a class="method" href="method.Image.get_base_type.html">get_base_type</a>
+  
+    <a class="method" href="method.Image.get_channel_by_name.html">get_channel_by_name</a>
+  
+    <a class="method" href="method.Image.get_channel_by_tattoo.html">get_channel_by_tattoo</a>
+  
+    <a class="method" href="method.Image.get_channels.html">get_channels</a>
+  
+    <a class="method" href="method.Image.get_color_profile.html">get_color_profile</a>
+  
+    <a class="method" href="method.Image.get_component_active.html">get_component_active</a>
+  
+    <a class="method" href="method.Image.get_component_visible.html">get_component_visible</a>
+  
+    <a class="method" href="method.Image.get_default_new_layer_mode.html">get_default_new_layer_mode</a>
+  
+    <a class="method" href="method.Image.get_effective_color_profile.html">get_effective_color_profile</a>
+  
+    <a class="method" href="method.Image.get_exported_file.html">get_exported_file</a>
+  
+    <a class="method" href="method.Image.get_file.html">get_file</a>
+  
+    <a class="method" href="method.Image.get_floating_sel.html">get_floating_sel</a>
+  
+    <a class="method" href="method.Image.get_guide_orientation.html">get_guide_orientation</a>
+  
+    <a class="method" href="method.Image.get_guide_position.html">get_guide_position</a>
+  
+    <a class="method" href="method.Image.get_height.html">get_height</a>
+  
+    <a class="method" href="method.Image.get_id.html">get_id</a>
+  
+    <a class="method" href="method.Image.get_imported_file.html">get_imported_file</a>
+  
+    <a class="method" href="method.Image.get_item_position.html">get_item_position</a>
+  
+    <a class="method" href="method.Image.get_layer_by_name.html">get_layer_by_name</a>
+  
+    <a class="method" href="method.Image.get_layer_by_tattoo.html">get_layer_by_tattoo</a>
+  
+    <a class="method" href="method.Image.get_layers.html">get_layers</a>
+  
+    <a class="method" href="method.Image.get_metadata.html">get_metadata</a>
+  
+    <a class="method" href="method.Image.get_name.html">get_name</a>
+  
+    <a class="method" href="method.Image.get_palette.html">get_palette</a>
+  
+    <a class="method" href="method.Image.get_parasite.html">get_parasite</a>
+  
+    <a class="method" href="method.Image.get_parasite_list.html">get_parasite_list</a>
+  
+    <a class="method" href="method.Image.get_path_by_name.html">get_path_by_name</a>
+  
+    <a class="method" href="method.Image.get_path_by_tattoo.html">get_path_by_tattoo</a>
+  
+    <a class="method" href="method.Image.get_paths.html">get_paths</a>
+  
+    <a class="method" href="method.Image.get_precision.html">get_precision</a>
+  
+    <a class="method" href="method.Image.get_resolution.html">get_resolution</a>
+  
+    <a class="method" href="method.Image.get_sample_point_position.html">get_sample_point_position</a>
+  
+    <a class="method" href="method.Image.get_selected_channels.html">get_selected_channels</a>
+  
+    <a class="method" href="method.Image.get_selected_drawables.html">get_selected_drawables</a>
+  
+    <a class="method" href="method.Image.get_selected_layers.html">get_selected_layers</a>
+  
+    <a class="method" href="method.Image.get_selected_paths.html">get_selected_paths</a>
+  
+    <a class="method" href="method.Image.get_selection.html">get_selection</a>
+  
+    <a class="method" href="method.Image.get_simulation_bpc.html">get_simulation_bpc</a>
+  
+    <a class="method" href="method.Image.get_simulation_intent.html">get_simulation_intent</a>
+  
+    <a class="method" href="method.Image.get_simulation_profile.html">get_simulation_profile</a>
+  
+    <a class="method" href="method.Image.get_tattoo_state.html">get_tattoo_state</a>
+  
+    <a class="method" href="method.Image.get_thumbnail.html">get_thumbnail</a>
+  
+    <a class="method" href="method.Image.get_thumbnail_data.html">get_thumbnail_data</a>
+  
+    <a class="method" href="method.Image.get_unit.html">get_unit</a>
+  
+    <a class="method" href="method.Image.get_width.html">get_width</a>
+  
+    <a class="method" href="method.Image.get_xcf_file.html">get_xcf_file</a>
+  
+    <a class="method" href="method.Image.grid_get_background_color.html">grid_get_background_color</a>
+  
+    <a class="method" href="method.Image.grid_get_foreground_color.html">grid_get_foreground_color</a>
+  
+    <a class="method" href="method.Image.grid_get_offset.html">grid_get_offset</a>
+  
+    <a class="method" href="method.Image.grid_get_spacing.html">grid_get_spacing</a>
+  
+    <a class="method" href="method.Image.grid_get_style.html">grid_get_style</a>
+  
+    <a class="method" href="method.Image.grid_set_background_color.html">grid_set_background_color</a>
+  
+    <a class="method" href="method.Image.grid_set_foreground_color.html">grid_set_foreground_color</a>
+  
+    <a class="method" href="method.Image.grid_set_offset.html">grid_set_offset</a>
+  
+    <a class="method" href="method.Image.grid_set_spacing.html">grid_set_spacing</a>
+  
+    <a class="method" href="method.Image.grid_set_style.html">grid_set_style</a>
+  
+    <a class="method" href="method.Image.import_paths_from_file.html">import_paths_from_file</a>
+  
+    <a class="method" href="method.Image.import_paths_from_string.html">import_paths_from_string</a>
+  
+    <a class="method" href="method.Image.insert_channel.html">insert_channel</a>
+  
+    <a class="method" href="method.Image.insert_layer.html">insert_layer</a>
+  
+    <a class="method" href="method.Image.insert_path.html">insert_path</a>
+  
+    <a class="method" href="method.Image.is_dirty.html">is_dirty</a>
+  
+    <a class="method" href="method.Image.is_valid.html">is_valid</a>
+  
+    <a class="method" href="method.Image.list_channels.html">list_channels</a>
+  
+    <a class="method" href="method.Image.list_layers.html">list_layers</a>
+  
+    <a class="method" href="method.Image.list_paths.html">list_paths</a>
+  
+    <a class="method" href="method.Image.list_selected_channels.html">list_selected_channels</a>
+  
+    <a class="method" href="method.Image.list_selected_drawables.html">list_selected_drawables</a>
+  
+    <a class="method" href="method.Image.list_selected_layers.html">list_selected_layers</a>
+  
+    <a class="method" href="method.Image.list_selected_paths.html">list_selected_paths</a>
+  
+    <a class="method" href="method.Image.lower_item.html">lower_item</a>
+  
+    <a class="method" href="method.Image.lower_item_to_bottom.html">lower_item_to_bottom</a>
+  
+    <a class="method" href="method.Image.merge_down.html">merge_down</a>
+  
+    <a class="method" href="method.Image.merge_visible_layers.html">merge_visible_layers</a>
+  
+    <a class="method" href="method.Image.metadata_save_filter.html">metadata_save_filter</a>
+  
+    <a class="method" href="method.Image.metadata_save_prepare.html">metadata_save_prepare</a>
+  
+    <a class="method" href="method.Image.pick_color.html">pick_color</a>
+  
+    <a class="method" href="method.Image.pick_correlate_layer.html">pick_correlate_layer</a>
+  
+    <a class="method" href="method.Image.policy_color_profile.html">policy_color_profile</a>
+  
+    <a class="method" href="method.Image.policy_rotate.html">policy_rotate</a>
+  
+    <a class="method" href="method.Image.raise_item.html">raise_item</a>
+  
+    <a class="method" href="method.Image.raise_item_to_top.html">raise_item_to_top</a>
+  
+    <a class="method" href="method.Image.remove_channel.html">remove_channel</a>
+  
+    <a class="method" href="method.Image.remove_layer.html">remove_layer</a>
+  
+    <a class="method" href="method.Image.remove_path.html">remove_path</a>
+  
+    <a class="method" href="method.Image.reorder_item.html">reorder_item</a>
+  
+    <a class="method" href="method.Image.resize.html">resize</a>
+  
+    <a class="method" href="method.Image.resize_to_layers.html">resize_to_layers</a>
+  
+    <a class="method" href="method.Image.rotate.html">rotate</a>
+  
+    <a class="method" href="method.Image.scale.html">scale</a>
+  
+    <a class="method" href="method.Image.select_color.html">select_color</a>
+  
+    <a class="method" href="method.Image.select_contiguous_color.html">select_contiguous_color</a>
+  
+    <a class="method" href="method.Image.select_ellipse.html">select_ellipse</a>
+  
+    <a class="method" href="method.Image.select_item.html">select_item</a>
+  
+    <a class="method" href="method.Image.select_polygon.html">select_polygon</a>
+  
+    <a class="method" href="method.Image.select_rectangle.html">select_rectangle</a>
+  
+    <a class="method" href="method.Image.select_round_rectangle.html">select_round_rectangle</a>
+  
+    <a class="method" href="method.Image.set_color_profile.html">set_color_profile</a>
+  
+    <a class="method" href="method.Image.set_color_profile_from_file.html">set_color_profile_from_file</a>
+  
+    <a class="method" href="method.Image.set_component_active.html">set_component_active</a>
+  
+    <a class="method" href="method.Image.set_component_visible.html">set_component_visible</a>
+  
+    <a class="method" href="method.Image.set_file.html">set_file</a>
+  
+    <a class="method" href="method.Image.set_metadata.html">set_metadata</a>
+  
+    <a class="method" href="method.Image.set_palette.html">set_palette</a>
+  
+    <a class="method" href="method.Image.set_resolution.html">set_resolution</a>
+  
+    <a class="method" href="method.Image.set_selected_channels.html">set_selected_channels</a>
+  
+    <a class="method" href="method.Image.set_selected_layers.html">set_selected_layers</a>
+  
+    <a class="method" href="method.Image.set_selected_paths.html">set_selected_paths</a>
+  
+    <a class="method" href="method.Image.set_simulation_bpc.html">set_simulation_bpc</a>
+  
+    <a class="method" href="method.Image.set_simulation_intent.html">set_simulation_intent</a>
+  
+    <a class="method" href="method.Image.set_simulation_profile.html">set_simulation_profile</a>
+  
+    <a class="method" href="method.Image.set_simulation_profile_from_file.html">set_simulation_profile_from_file</a>
+  
+    <a class="method" href="method.Image.set_tattoo_state.html">set_tattoo_state</a>
+  
+    <a class="method" href="method.Image.set_unit.html">set_unit</a>
+  
+    <a class="method" href="method.Image.take_selected_channels.html">take_selected_channels</a>
+  
+    <a class="method" href="method.Image.take_selected_layers.html">take_selected_layers</a>
+  
+    <a class="method" href="method.Image.take_selected_paths.html">take_selected_paths</a>
+  
+    <a class="method" href="method.Image.thaw_channels.html">thaw_channels</a>
+  
+    <a class="method" href="method.Image.thaw_layers.html">thaw_layers</a>
+  
+    <a class="method" href="method.Image.thaw_paths.html">thaw_paths</a>
+  
+    <a class="method" href="method.Image.undo_disable.html">undo_disable</a>
+  
+    <a class="method" href="method.Image.undo_enable.html">undo_enable</a>
+  
+    <a class="method" href="method.Image.undo_freeze.html">undo_freeze</a>
+  
+    <a class="method" href="method.Image.undo_group_end.html">undo_group_end</a>
+  
+    <a class="method" href="method.Image.undo_group_start.html">undo_group_start</a>
+  
+    <a class="method" href="method.Image.undo_is_enabled.html">undo_is_enabled</a>
+  
+    <a class="method" href="method.Image.undo_thaw.html">undo_thaw</a>
+  
+    <a class="method" href="method.Image.unset_active_channel.html">unset_active_channel</a>
+  
+  </div>
+</div>
+
+
+
+<div class="section">
+  <h5>Properties</h5>
+  <div class="links">
+  
+    <a class="property" href="property.Image.id.html">id</a>
+  
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+      <div class="section generator">
+        <p>Generated by <a href="https://gitlab.gnome.org/GNOME/gi-docgen">gi-docgen</a> 2023.1</p>
+      </div>
+    </nav>
+
+    <button id="btn-to-top" class="hidden"><span class="up-arrow"></span></button>
+
+    
+<section id="main" class="content">
+  <header>
+    <h3>Class</h3>
+    <h1 aria-label="Name"><a href="index.html">Gimp</a><span class="sep" role="presentation"></span>Image</h1>
+  </header>
+
+  <section>
+    <summary>
+      <div class="docblock">
+        <p></p>
+      </div>
+
+      <div class="toggle-wrapper">
+        <h4 id="description" style="display:flex;">
+          Description
+          <a href="#description" class="anchor"></a>
+          
+          <a class="srclink" title="go to source location" href="https://gitlab.gnome.org/GNOME/gimp/-/blob/master/libgimp/gimpimage_pdb.c#L30">[src]</a>
+          
+        </h4>
+
+        <pre><code>final class Gimp.Image : GObject.Object {
+  /* No available fields */
+}</pre></code>
+
+        <div class="docblock">
+          <p>Operations on complete images: creation, resizing/rescaling, and
+operations involving multiple&nbsp;layers.</p>
+        </div>
+
+        <div class="docblock">
+          
+          
+          
+        </div>
+
+        
+      </div>
+    </summary>
+
+    
+    <div class="toggle-wrapper hierarchy">
+      <h4 id="hierarchy">
+        Hierarchy
+        <a href="#hierarchy" class="anchor"></a>
+      </h4>
+      <div class="docblock" alt="Hierarchy for Gimp.Image">
+        <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.43.0 (0)
+ -->
+<!-- Title: hierarchy Pages: 1 -->
+<svg width="107pt" height="116pt"
+ viewBox="0.00 0.00 107.00 116.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>hierarchy</title>
+<!-- this -->
+<g id="node1" class="node">
+<title>this</title>
+<g id="a_node1"><a xlink:title="GimpImage">
+<path fill="none" stroke="black" d="M87,-36C87,-36 12,-36 12,-36 6,-36 0,-30 0,-24 0,-24 0,-12 0,-12 0,-6 6,0 12,0 12,0 87,0 87,0 93,0 99,-6 99,-12 99,-12 99,-24 99,-24 99,-30 93,-36 87,-36"/>
+<text text-anchor="middle" x="49.5" y="-14.3" font-family="Times,serif" font-size="14.00">GimpImage</text>
+</a>
+</g>
+</g>
+<!-- ancestor_0 -->
+<g id="node2" class="node">
+<title>ancestor_0</title>
+<g id="a_node2"><a xlink:title="GObject.Object">
+<path fill="none" stroke="black" d="M74.5,-108C74.5,-108 24.5,-108 24.5,-108 18.5,-108 12.5,-102 12.5,-96 12.5,-96 12.5,-84 12.5,-84 12.5,-78 18.5,-72 24.5,-72 24.5,-72 74.5,-72 74.5,-72 80.5,-72 86.5,-78 86.5,-84 86.5,-84 86.5,-96 86.5,-96 86.5,-102 80.5,-108 74.5,-108"/>
+<text text-anchor="middle" x="49.5" y="-86.3" font-family="Times,serif" font-size="14.00">GObject</text>
+</a>
+</g>
+</g>
+<!-- ancestor_0&#45;&#45;this -->
+<g id="edge1" class="edge">
+<title>ancestor_0&#45;&#45;this</title>
+<path fill="none" stroke="black" d="M49.5,-71.7C49.5,-60.85 49.5,-46.92 49.5,-36.1"/>
+</g>
+</g>
+</svg>
+
+      </div>
+    </div>
+    
+
+    
+    <div class="toggle-wrapper ancestors">
+      <h4 id="ancestors">
+        Ancestors
+        <a href="#ancestors" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <ul>
+        
+          
+          <li class="class"><a class="external" href="javascript:void(0)" data-link="class.Object.html" data-namespace="GObject">GObject</a></li>
+          
+        
+        </ul>
+      </div>
+    </div>
+    
+
+    
+
+    
+
+    
+    <div class="toggle-wrapper constructors">
+      <h4 id="constructors">
+        Constructors
+        <a href="#constructors" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="ctor.Image.new.html">gimp_image_new</a></h6>
+          <div class="docblock">
+            <p>Creates a new image with the specified width, height, and&nbsp;type.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="ctor.Image.new_with_precision.html">gimp_image_new_with_precision</a></h6>
+          <div class="docblock">
+            <p>Creates a new image with the specified width, height, type and&nbsp;precision.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+    
+
+    
+    <div class="toggle-wrapper methods">
+      <h4 id="type-functions">
+        Functions
+        <a href="#type-functions" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+      <div class="">
+        <h6><a href="type_func.Image.convert_set_dither_matrix.html">gimp_image_convert_set_dither_matrix</a></h6>
+        <div class="docblock">
+          <p>Set dither matrix for conversion to&nbsp;indexed.</p>
+        </div>
+        <div class="docblock">
+          <p><span class="emblem available">since: 2.4</span></p>
+        </div>
+      </div>
+      
+      <div class="">
+        <h6><a href="type_func.Image.get_by_id.html">gimp_image_get_by_id</a></h6>
+        <div class="docblock">
+          No description available.
+        </div>
+        <div class="docblock">
+          <p><span class="emblem available">since: 3.0</span></p>
+        </div>
+      </div>
+      
+      <div class="">
+        <h6><a href="type_func.Image.id_is_valid.html">gimp_image_id_is_valid</a></h6>
+        <div class="docblock">
+          <p>Returns <span class="caps">TRUE</span> if the image <span class="caps">ID</span> is&nbsp;valid.</p>
+        </div>
+        <div class="docblock">
+          <p><span class="emblem available">since: 3.0</span></p>
+        </div>
+      </div>
+      
+      <div class="">
+        <h6><a href="type_func.Image.metadata_load_thumbnail.html">gimp_image_metadata_load_thumbnail</a></h6>
+        <div class="docblock">
+          <p>Retrieves a thumbnail from metadata if&nbsp;present.</p>
+        </div>
+        <div class="docblock">
+          <p><span class="emblem available">since: 2.10</span></p>
+        </div>
+      </div>
+      
+      </div>
+    </div>
+    
+
+    
+    <div class="toggle-wrapper methods">
+      <h4 id="methods">
+        Instance methods
+        <a href="#methods" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="method.Image.add_hguide.html">gimp_image_add_hguide</a></h6>
+          <div class="docblock">
+            <p>Add a horizontal guide to an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.add_sample_point.html">gimp_image_add_sample_point</a></h6>
+          <div class="docblock">
+            <p>Add a sample point to an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.add_vguide.html">gimp_image_add_vguide</a></h6>
+          <div class="docblock">
+            <p>Add a vertical guide to an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.attach_parasite.html">gimp_image_attach_parasite</a></h6>
+          <div class="docblock">
+            <p>Add a parasite to an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.autocrop.html">gimp_image_autocrop</a></h6>
+          <div class="docblock">
+            <p>Remove empty borders from the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.autocrop_selected_layers.html">gimp_image_autocrop_selected_layers</a></h6>
+          <div class="docblock">
+            <p>Crop the selected layers based on empty borders of the input&nbsp;drawable.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.clean_all.html">gimp_image_clean_all</a></h6>
+          <div class="docblock">
+            <p>Set the image dirty count to&nbsp;0.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.convert_color_profile.html">gimp_image_convert_color_profile</a></h6>
+          <div class="docblock">
+            <p>Convert the image&#8217;s layers to a color&nbsp;profile.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.convert_color_profile_from_file.html">gimp_image_convert_color_profile_from_file</a></h6>
+          <div class="docblock">
+            <p>Convert the image&#8217;s layers to a color&nbsp;profile.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.convert_grayscale.html">gimp_image_convert_grayscale</a></h6>
+          <div class="docblock">
+            <p>Convert specified image to&nbsp;grayscale.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.convert_indexed.html">gimp_image_convert_indexed</a></h6>
+          <div class="docblock">
+            <p>Convert specified image to and Indexed&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.convert_precision.html">gimp_image_convert_precision</a></h6>
+          <div class="docblock">
+            <p>Convert the image to the specified&nbsp;precision.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.convert_rgb.html">gimp_image_convert_rgb</a></h6>
+          <div class="docblock">
+            <p>Convert specified image to <span class="caps">RGB</span>&nbsp;color.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.crop.html">gimp_image_crop</a></h6>
+          <div class="docblock">
+            <p>Crop the image to the specified&nbsp;extents.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.delete.html">gimp_image_delete</a></h6>
+          <div class="docblock">
+            <p>Delete the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.delete_guide.html">gimp_image_delete_guide</a></h6>
+          <div class="docblock">
+            <p>Deletes a guide from an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.delete_sample_point.html">gimp_image_delete_sample_point</a></h6>
+          <div class="docblock">
+            <p>Deletes a sample point from an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.detach_parasite.html">gimp_image_detach_parasite</a></h6>
+          <div class="docblock">
+            <p>Removes a parasite from an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.duplicate.html">gimp_image_duplicate</a></h6>
+          <div class="docblock">
+            <p>Duplicate the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.export_path_to_file.html">gimp_image_export_path_to_file</a></h6>
+          <div class="docblock">
+            <p>Save a path as an <span class="caps">SVG</span>&nbsp;file.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.6</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.export_path_to_string.html">gimp_image_export_path_to_string</a></h6>
+          <div class="docblock">
+            <p>Save a path as an <span class="caps">SVG</span>&nbsp;string.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.6</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.find_next_guide.html">gimp_image_find_next_guide</a></h6>
+          <div class="docblock">
+            <p>Find next guide on an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.find_next_sample_point.html">gimp_image_find_next_sample_point</a></h6>
+          <div class="docblock">
+            <p>Find next sample point on an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.flatten.html">gimp_image_flatten</a></h6>
+          <div class="docblock">
+            <p>Flatten all visible layers into a single layer. Discard all
+invisible&nbsp;layers.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.flip.html">gimp_image_flip</a></h6>
+          <div class="docblock">
+            <p>Flips the image horizontally or&nbsp;vertically.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.floating_sel_attached_to.html">gimp_image_floating_sel_attached_to</a></h6>
+          <div class="docblock">
+            <p>Return the drawable the floating selection is attached&nbsp;to.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.freeze_channels.html">gimp_image_freeze_channels</a></h6>
+          <div class="docblock">
+            <p>Freeze the image&#8217;s channel&nbsp;list.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10.2</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.freeze_layers.html">gimp_image_freeze_layers</a></h6>
+          <div class="docblock">
+            <p>Freeze the image&#8217;s layer&nbsp;list.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10.2</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.freeze_paths.html">gimp_image_freeze_paths</a></h6>
+          <div class="docblock">
+            <p>Freeze the image&#8217;s path&nbsp;list.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10.2</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_base_type.html">gimp_image_get_base_type</a></h6>
+          <div class="docblock">
+            <p>Get the base type of the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_channel_by_name.html">gimp_image_get_channel_by_name</a></h6>
+          <div class="docblock">
+            <p>Find a channel with a given name in an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_channel_by_tattoo.html">gimp_image_get_channel_by_tattoo</a></h6>
+          <div class="docblock">
+            <p>Find a channel with a given tattoo in an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_channels.html">gimp_image_get_channels</a></h6>
+          <div class="docblock">
+            <p>Returns the list of channels contained in the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_color_profile.html">gimp_image_get_color_profile</a></h6>
+          <div class="docblock">
+            <p>Returns the image&#8217;s color&nbsp;profile.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_component_active.html">gimp_image_get_component_active</a></h6>
+          <div class="docblock">
+            <p>Returns if the specified image&#8217;s image component is&nbsp;active.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_component_visible.html">gimp_image_get_component_visible</a></h6>
+          <div class="docblock">
+            <p>Returns if the specified image&#8217;s image component is&nbsp;visible.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_default_new_layer_mode.html">gimp_image_get_default_new_layer_mode</a></h6>
+          <div class="docblock">
+            <p>Get the default mode for newly created layers of this&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_effective_color_profile.html">gimp_image_get_effective_color_profile</a></h6>
+          <div class="docblock">
+            <p>Returns the color profile that is used for the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_exported_file.html">gimp_image_get_exported_file</a></h6>
+          <div class="docblock">
+            <p>Returns the exported file for the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_file.html">gimp_image_get_file</a></h6>
+          <div class="docblock">
+            <p>Returns the file for the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_floating_sel.html">gimp_image_get_floating_sel</a></h6>
+          <div class="docblock">
+            <p>Return the floating selection of the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_guide_orientation.html">gimp_image_get_guide_orientation</a></h6>
+          <div class="docblock">
+            <p>Get orientation of a guide on an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_guide_position.html">gimp_image_get_guide_position</a></h6>
+          <div class="docblock">
+            <p>Get position of a guide on an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_height.html">gimp_image_get_height</a></h6>
+          <div class="docblock">
+            <p>Return the height of the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_id.html">gimp_image_get_id</a></h6>
+          <div class="docblock">
+            No description available.
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_imported_file.html">gimp_image_get_imported_file</a></h6>
+          <div class="docblock">
+            <p>Returns the imported file for the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_item_position.html">gimp_image_get_item_position</a></h6>
+          <div class="docblock">
+            <p>Returns the position of the item in its level of its item&nbsp;tree.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_layer_by_name.html">gimp_image_get_layer_by_name</a></h6>
+          <div class="docblock">
+            <p>Find a layer with a given name in an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_layer_by_tattoo.html">gimp_image_get_layer_by_tattoo</a></h6>
+          <div class="docblock">
+            <p>Find a layer with a given tattoo in an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_layers.html">gimp_image_get_layers</a></h6>
+          <div class="docblock">
+            <p>Returns the list of root layers contained in the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_metadata.html">gimp_image_get_metadata</a></h6>
+          <div class="docblock">
+            <p>Returns the image&#8217;s&nbsp;metadata.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_name.html">gimp_image_get_name</a></h6>
+          <div class="docblock">
+            <p>Returns the specified image&#8217;s&nbsp;name.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_palette.html">gimp_image_get_palette</a></h6>
+          <div class="docblock">
+            <p>Returns the image&#8217;s&nbsp;colormap.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_parasite.html">gimp_image_get_parasite</a></h6>
+          <div class="docblock">
+            <p>Look up a parasite in an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_parasite_list.html">gimp_image_get_parasite_list</a></h6>
+          <div class="docblock">
+            <p>List all&nbsp;parasites.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_path_by_name.html">gimp_image_get_path_by_name</a></h6>
+          <div class="docblock">
+            <p>Find a path with a given name in an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_path_by_tattoo.html">gimp_image_get_path_by_tattoo</a></h6>
+          <div class="docblock">
+            <p>Find a path with a given tattoo in an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.6</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_paths.html">gimp_image_get_paths</a></h6>
+          <div class="docblock">
+            <p>Returns the list of paths contained in the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_precision.html">gimp_image_get_precision</a></h6>
+          <div class="docblock">
+            <p>Get the precision of the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_resolution.html">gimp_image_get_resolution</a></h6>
+          <div class="docblock">
+            <p>Returns the specified image&#8217;s&nbsp;resolution.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_sample_point_position.html">gimp_image_get_sample_point_position</a></h6>
+          <div class="docblock">
+            <p>Get position of a sample point on an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_selected_channels.html">gimp_image_get_selected_channels</a></h6>
+          <div class="docblock">
+            <p>Returns the specified image&#8217;s selected&nbsp;channels.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_selected_drawables.html">gimp_image_get_selected_drawables</a></h6>
+          <div class="docblock">
+            <p>Get the image&#8217;s selected&nbsp;drawables.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_selected_layers.html">gimp_image_get_selected_layers</a></h6>
+          <div class="docblock">
+            <p>Returns the specified image&#8217;s selected&nbsp;layers.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_selected_paths.html">gimp_image_get_selected_paths</a></h6>
+          <div class="docblock">
+            <p>Returns the specified image&#8217;s selected&nbsp;paths.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_selection.html">gimp_image_get_selection</a></h6>
+          <div class="docblock">
+            <p>Returns the specified image&#8217;s&nbsp;selection.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_simulation_bpc.html">gimp_image_get_simulation_bpc</a></h6>
+          <div class="docblock">
+            <p>Returns whether the image has Black Point Compensation enabled for
+its&nbsp;simulation.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_simulation_intent.html">gimp_image_get_simulation_intent</a></h6>
+          <div class="docblock">
+            <p>Returns the image&#8217;s simulation rendering&nbsp;intent.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_simulation_profile.html">gimp_image_get_simulation_profile</a></h6>
+          <div class="docblock">
+            <p>Returns the image&#8217;s simulation color&nbsp;profile.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_tattoo_state.html">gimp_image_get_tattoo_state</a></h6>
+          <div class="docblock">
+            <p>Returns the tattoo state associated with the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_thumbnail.html">gimp_image_get_thumbnail</a></h6>
+          <div class="docblock">
+            <p>Retrieves a thumbnail pixbuf for <code>image</code>.
+The thumbnail will be not larger than the requested&nbsp;size.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.2</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_thumbnail_data.html">gimp_image_get_thumbnail_data</a></h6>
+          <div class="docblock">
+            <p>Get a thumbnail of an&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_unit.html">gimp_image_get_unit</a></h6>
+          <div class="docblock">
+            <p>Returns the specified image&#8217;s&nbsp;unit.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_width.html">gimp_image_get_width</a></h6>
+          <div class="docblock">
+            <p>Return the width of the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.get_xcf_file.html">gimp_image_get_xcf_file</a></h6>
+          <div class="docblock">
+            <p>Returns the <span class="caps">XCF</span> file for the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.grid_get_background_color.html">gimp_image_grid_get_background_color</a></h6>
+          <div class="docblock">
+            <p>Sets the background color of an image&#8217;s&nbsp;grid.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.grid_get_foreground_color.html">gimp_image_grid_get_foreground_color</a></h6>
+          <div class="docblock">
+            <p>Sets the foreground color of an image&#8217;s&nbsp;grid.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.grid_get_offset.html">gimp_image_grid_get_offset</a></h6>
+          <div class="docblock">
+            <p>Gets the offset of an image&#8217;s&nbsp;grid.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.grid_get_spacing.html">gimp_image_grid_get_spacing</a></h6>
+          <div class="docblock">
+            <p>Gets the spacing of an image&#8217;s&nbsp;grid.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.grid_get_style.html">gimp_image_grid_get_style</a></h6>
+          <div class="docblock">
+            <p>Gets the style of an image&#8217;s&nbsp;grid.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.grid_set_background_color.html">gimp_image_grid_set_background_color</a></h6>
+          <div class="docblock">
+            <p>Gets the background color of an image&#8217;s&nbsp;grid.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.grid_set_foreground_color.html">gimp_image_grid_set_foreground_color</a></h6>
+          <div class="docblock">
+            <p>Gets the foreground color of an image&#8217;s&nbsp;grid.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.grid_set_offset.html">gimp_image_grid_set_offset</a></h6>
+          <div class="docblock">
+            <p>Sets the offset of an image&#8217;s&nbsp;grid.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.grid_set_spacing.html">gimp_image_grid_set_spacing</a></h6>
+          <div class="docblock">
+            <p>Sets the spacing of an image&#8217;s&nbsp;grid.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.grid_set_style.html">gimp_image_grid_set_style</a></h6>
+          <div class="docblock">
+            <p>Sets the style unit of an image&#8217;s&nbsp;grid.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.import_paths_from_file.html">gimp_image_import_paths_from_file</a></h6>
+          <div class="docblock">
+            <p>Import paths from an <span class="caps">SVG</span>&nbsp;file.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.import_paths_from_string.html">gimp_image_import_paths_from_string</a></h6>
+          <div class="docblock">
+            <p>Import paths from an <span class="caps">SVG</span>&nbsp;string.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.insert_channel.html">gimp_image_insert_channel</a></h6>
+          <div class="docblock">
+            <p>Add the specified channel to the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.insert_layer.html">gimp_image_insert_layer</a></h6>
+          <div class="docblock">
+            <p>Add the specified layer to the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.insert_path.html">gimp_image_insert_path</a></h6>
+          <div class="docblock">
+            <p>Add the specified path to the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.is_dirty.html">gimp_image_is_dirty</a></h6>
+          <div class="docblock">
+            <p>Checks if the image has unsaved&nbsp;changes.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.is_valid.html">gimp_image_is_valid</a></h6>
+          <div class="docblock">
+            <p>Returns <span class="caps">TRUE</span> if the image is&nbsp;valid.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.list_channels.html">gimp_image_list_channels</a></h6>
+          <div class="docblock">
+            <p>Returns the list of channels contained in the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.list_layers.html">gimp_image_list_layers</a></h6>
+          <div class="docblock">
+            <p>Returns the list of layers contained in the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.list_paths.html">gimp_image_list_paths</a></h6>
+          <div class="docblock">
+            <p>Returns the list of paths contained in the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.list_selected_channels.html">gimp_image_list_selected_channels</a></h6>
+          <div class="docblock">
+            <p>Returns the list of channels selected in the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.list_selected_drawables.html">gimp_image_list_selected_drawables</a></h6>
+          <div class="docblock">
+            <p>Returns the list of drawables selected in the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.list_selected_layers.html">gimp_image_list_selected_layers</a></h6>
+          <div class="docblock">
+            <p>Returns the list of layers selected in the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.list_selected_paths.html">gimp_image_list_selected_paths</a></h6>
+          <div class="docblock">
+            <p>Returns the list of paths selected in the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.lower_item.html">gimp_image_lower_item</a></h6>
+          <div class="docblock">
+            <p>Lower the specified item in its level in its item&nbsp;tree.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.lower_item_to_bottom.html">gimp_image_lower_item_to_bottom</a></h6>
+          <div class="docblock">
+            <p>Lower the specified item to the bottom of its level in its item&nbsp;tree.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.merge_down.html">gimp_image_merge_down</a></h6>
+          <div class="docblock">
+            <p>Merge the layer passed and the first visible layer&nbsp;below.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.merge_visible_layers.html">gimp_image_merge_visible_layers</a></h6>
+          <div class="docblock">
+            <p>Merge the visible image layers into&nbsp;one.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.metadata_save_filter.html">gimp_image_metadata_save_filter</a></h6>
+          <div class="docblock">
+            <p>Filters the <code>metadata</code> retrieved from the image with
+<code>gimp_image_metadata_save_prepare()</code>, taking into account the
+passed <code>flags</code>.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.metadata_save_prepare.html">gimp_image_metadata_save_prepare</a></h6>
+          <div class="docblock">
+            <p>Gets the image metadata for storing it in an exported&nbsp;file.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.pick_color.html">gimp_image_pick_color</a></h6>
+          <div class="docblock">
+            <p>Determine the color at the given&nbsp;coordinates.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.pick_correlate_layer.html">gimp_image_pick_correlate_layer</a></h6>
+          <div class="docblock">
+            <p>Find the layer visible at the specified&nbsp;coordinates.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.policy_color_profile.html">gimp_image_policy_color_profile</a></h6>
+          <div class="docblock">
+            <p>Execute the color profile conversion&nbsp;policy.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.policy_rotate.html">gimp_image_policy_rotate</a></h6>
+          <div class="docblock">
+            <p>Execute the &#34;Orientation&#34; metadata&nbsp;policy.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.raise_item.html">gimp_image_raise_item</a></h6>
+          <div class="docblock">
+            <p>Raise the specified item in its level in its item&nbsp;tree.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.raise_item_to_top.html">gimp_image_raise_item_to_top</a></h6>
+          <div class="docblock">
+            <p>Raise the specified item to the top of its level in its item&nbsp;tree.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.remove_channel.html">gimp_image_remove_channel</a></h6>
+          <div class="docblock">
+            <p>Remove the specified channel from the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.remove_layer.html">gimp_image_remove_layer</a></h6>
+          <div class="docblock">
+            <p>Remove the specified layer from the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.remove_path.html">gimp_image_remove_path</a></h6>
+          <div class="docblock">
+            <p>Remove the specified path from the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.4</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.reorder_item.html">gimp_image_reorder_item</a></h6>
+          <div class="docblock">
+            <p>Reorder the specified item within its item&nbsp;tree.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.resize.html">gimp_image_resize</a></h6>
+          <div class="docblock">
+            <p>Resize the image to the specified&nbsp;extents.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.resize_to_layers.html">gimp_image_resize_to_layers</a></h6>
+          <div class="docblock">
+            <p>Resize the image to fit all&nbsp;layers.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.2</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.rotate.html">gimp_image_rotate</a></h6>
+          <div class="docblock">
+            <p>Rotates the image by the specified&nbsp;degrees.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.scale.html">gimp_image_scale</a></h6>
+          <div class="docblock">
+            <p>Scale the image using the default interpolation&nbsp;method.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.select_color.html">gimp_image_select_color</a></h6>
+          <div class="docblock">
+            <p>Create a selection by selecting all pixels (in the specified
+drawable) with the same (or similar) color to that&nbsp;specified.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.select_contiguous_color.html">gimp_image_select_contiguous_color</a></h6>
+          <div class="docblock">
+            <p>Create a selection by selecting all pixels around specified
+coordinates with the same (or similar) color to that at the&nbsp;coordinates.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.select_ellipse.html">gimp_image_select_ellipse</a></h6>
+          <div class="docblock">
+            <p>Create an elliptical selection over the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.select_item.html">gimp_image_select_item</a></h6>
+          <div class="docblock">
+            <p>Transforms the specified item into a&nbsp;selection.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.select_polygon.html">gimp_image_select_polygon</a></h6>
+          <div class="docblock">
+            <p>Create a polygonal selection over the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.select_rectangle.html">gimp_image_select_rectangle</a></h6>
+          <div class="docblock">
+            <p>Create a rectangular selection over the specified&nbsp;image;</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.select_round_rectangle.html">gimp_image_select_round_rectangle</a></h6>
+          <div class="docblock">
+            <p>Create a rectangular selection with round corners over the specified&nbsp;image;</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.8</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_color_profile.html">gimp_image_set_color_profile</a></h6>
+          <div class="docblock">
+            <p>Sets the image&#8217;s color&nbsp;profile.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_color_profile_from_file.html">gimp_image_set_color_profile_from_file</a></h6>
+          <div class="docblock">
+            <p>Sets the image&#8217;s color profile from an <span class="caps">ICC</span>&nbsp;file.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_component_active.html">gimp_image_set_component_active</a></h6>
+          <div class="docblock">
+            <p>Sets if the specified image&#8217;s image component is&nbsp;active.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_component_visible.html">gimp_image_set_component_visible</a></h6>
+          <div class="docblock">
+            <p>Sets if the specified image&#8217;s image component is&nbsp;visible.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_file.html">gimp_image_set_file</a></h6>
+          <div class="docblock">
+            <p>Sets the specified <span class="caps">XCF</span> image&#8217;s&nbsp;file.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_metadata.html">gimp_image_set_metadata</a></h6>
+          <div class="docblock">
+            <p>Set the image&#8217;s&nbsp;metadata.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_palette.html">gimp_image_set_palette</a></h6>
+          <div class="docblock">
+            <p>Set the image&#8217;s colormap to a copy of <code>palette</code>.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_resolution.html">gimp_image_set_resolution</a></h6>
+          <div class="docblock">
+            <p>Sets the specified image&#8217;s&nbsp;resolution.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_selected_channels.html">gimp_image_set_selected_channels</a></h6>
+          <div class="docblock">
+            <p>Sets the specified image&#8217;s selected&nbsp;channels.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_selected_layers.html">gimp_image_set_selected_layers</a></h6>
+          <div class="docblock">
+            <p>Sets the specified image&#8217;s selected&nbsp;layers.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_selected_paths.html">gimp_image_set_selected_paths</a></h6>
+          <div class="docblock">
+            <p>Sets the specified image&#8217;s selected&nbsp;paths.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_simulation_bpc.html">gimp_image_set_simulation_bpc</a></h6>
+          <div class="docblock">
+            <p>Sets whether the image has Black Point Compensation enabled for its&nbsp;simulation.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_simulation_intent.html">gimp_image_set_simulation_intent</a></h6>
+          <div class="docblock">
+            <p>Sets the image&#8217;s simulation rendering&nbsp;intent.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_simulation_profile.html">gimp_image_set_simulation_profile</a></h6>
+          <div class="docblock">
+            <p>Sets the image&#8217;s simulation color&nbsp;profile.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_simulation_profile_from_file.html">gimp_image_set_simulation_profile_from_file</a></h6>
+          <div class="docblock">
+            <p>Sets the image&#8217;s simulation color profile from an <span class="caps">ICC</span>&nbsp;file.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_tattoo_state.html">gimp_image_set_tattoo_state</a></h6>
+          <div class="docblock">
+            <p>Set the tattoo state associated with the&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.set_unit.html">gimp_image_set_unit</a></h6>
+          <div class="docblock">
+            <p>Sets the specified image&#8217;s&nbsp;unit.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.take_selected_channels.html">gimp_image_take_selected_channels</a></h6>
+          <div class="docblock">
+            <p>The channels are set as the selected channels in the image. Any previous
+selected layers or channels are unselected. An exception is a previously
+existing floating selection, in which case this procedure will return an
+execution&nbsp;error.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.take_selected_layers.html">gimp_image_take_selected_layers</a></h6>
+          <div class="docblock">
+            <p>The layers are set as the selected layers in the image. Any previous
+selected layers or channels are unselected. An exception is a previously
+existing floating selection, in which case this procedure will return an
+execution&nbsp;error.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.take_selected_paths.html">gimp_image_take_selected_paths</a></h6>
+          <div class="docblock">
+            <p>The paths are set as the selected paths in the image. Any previous
+selected paths are&nbsp;unselected.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 3.0</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.thaw_channels.html">gimp_image_thaw_channels</a></h6>
+          <div class="docblock">
+            <p>Thaw the image&#8217;s channel&nbsp;list.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10.2</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.thaw_layers.html">gimp_image_thaw_layers</a></h6>
+          <div class="docblock">
+            <p>Thaw the image&#8217;s layer&nbsp;list.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10.2</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.thaw_paths.html">gimp_image_thaw_paths</a></h6>
+          <div class="docblock">
+            <p>Thaw the image&#8217;s path&nbsp;list.</p>
+          </div>
+          <div class="docblock">
+            <p><span class="emblem available">since: 2.10.2</span></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.undo_disable.html">gimp_image_undo_disable</a></h6>
+          <div class="docblock">
+            <p>Disable the image&#8217;s undo&nbsp;stack.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.undo_enable.html">gimp_image_undo_enable</a></h6>
+          <div class="docblock">
+            <p>Enable the image&#8217;s undo&nbsp;stack.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.undo_freeze.html">gimp_image_undo_freeze</a></h6>
+          <div class="docblock">
+            <p>Freeze the image&#8217;s undo&nbsp;stack.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.undo_group_end.html">gimp_image_undo_group_end</a></h6>
+          <div class="docblock">
+            <p>Finish a group&nbsp;undo.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.undo_group_start.html">gimp_image_undo_group_start</a></h6>
+          <div class="docblock">
+            <p>Starts a group&nbsp;undo.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.undo_is_enabled.html">gimp_image_undo_is_enabled</a></h6>
+          <div class="docblock">
+            <p>Check if the image&#8217;s undo stack is&nbsp;enabled.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.undo_thaw.html">gimp_image_undo_thaw</a></h6>
+          <div class="docblock">
+            <p>Thaw the image&#8217;s undo&nbsp;stack.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+        <div class="">
+          <h6><a href="method.Image.unset_active_channel.html">gimp_image_unset_active_channel</a></h6>
+          <div class="docblock">
+            <p>Unsets the active channel in the specified&nbsp;image.</p>
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+      </div>
+
+      
+        
+        <div class="toggle-wrapper default-hide ancestor-methods"><h5 style="display:block;">Methods inherited from <a class="external" href="javascript:void(0)" data-link="class.Object.html" data-namespace="GObject">GObject</a> (43)</h5>
+          <div class="docblock">
+          
+            <div class="docblock">
+              <p>Please see&nbsp;<a class="external" href="javascript:void(0)" data-link="class.Object.html#methods" data-namespace="GObject">GObject</a>&nbsp;for a full list of methods.</em></p>
+            </div>
+          
+          </div>
+        </div>
+        
+      
+
+      
+    </div>
+    
+
+    
+    <div class="toggle-wrapper properties">
+      <h4 id="properties">
+        Properties
+        <a href="#properties" class="anchor"></a>
+      </h4>
+
+      
+      <div class="docblock">
+      
+        <div class="">
+          <h6><a href="property.Image.id.html">Gimp.Image:id</a></h6>
+          <div class="docblock">
+            No description available.
+          </div>
+          <div class="docblock">
+            <p></p>
+          </div>
+        </div>
+      
+      </div>
+      
+
+      
+        
+      
+
+      
+
+    </div>
+    
+
+    
+    <div class="signals toggle-wrapper">
+      <h4 id="signals">
+        Signals
+        <a href="#signals" class="anchor"></a>
+      </h4>
+
+      
+
+      
+        
+        <div class="toggle-wrapper default-hide ancestor-signals"><h5 style="display:block;">Signals inherited from <a class="external" href="javascript:void(0)" data-link="class.Object.html" data-namespace="GObject">GObject</a> (1)</h5>
+          <div class="docblock">
+          <h6><a class="external" href="javascript:void(0)" data-namespace="GObject" data-link="signal.Object.notify.html">GObject::notify</a></h6>
+            <div class="docblock">
+              <p>The notify signal is emitted on an object when one of its properties has
+its value set through g_object_set_property(), g_object_set(), et&nbsp;al.</p>
+            </div>
+            <div class="docblock">
+              <p></p>
+            </div>
+          
+          </div>
+        </div>
+        
+      
+
+      
+
+    </div>
+    
+
+    
+    <div class="class toggle-wrapper default-hide">
+      <h4 id="class-struct">
+        Class structure
+        <a href="#class-struct" class="anchor"></a>
+      </h4>
+
+      <div class="docblock">
+        <pre><code>struct GimpImageClass {
+  GObjectClass parent_class;
+  
+}</code></pre>
+      </div>
+
+      <div class="docblock">
+        No description available.
+      </div>
+
+      
+      <div class="docblock">
+        <h6>Class members</h6>
+
+        <dl class="members">
+        
+          <dt><code>parent_class: GObjectClass</code></dt>
+          <dd>No description available.</dd>
+        
+        </dd>
+      </div>
+      
+    </div>
+    
+
+    
+
+    
+
+  </section>
+</section>
+
+
+    
+<div id="toc" class="toc">
+  <nav aria-labelledby="toc-title">
+    <p id="toc-title">Content</p>
+    <ul class="toc-list">
+      <li class="toc-list-item"><a href="#description"><span class="link-text">Description</span></a></li>
+      
+      
+      <li class="toc-list-item"><a href="#hierarchy"><span class="link-text">Hierarchy</span></a></li>
+      
+      
+      <li class="toc-list-item"><a href="#ancestors"><span class="link-text">Ancestors</span></a></li>
+      
+      
+      
+<li class="toc-list-item"><a href="#constructors"><span class="link-text">Constructors</span></a></li>
+
+
+      
+<li class="toc-list-item"><a href="#type-functions"><span class="link-text">Functions</span></a></li>
+
+
+      
+<li class="toc-list-item"><a href="#methods"><span class="link-text">Methods</span></a></li>
+
+
+      
+<li class="toc-list-item"><a href="#properties"><span class="link-text">Properties</span></a></li>
+
+
+      
+
+      
+
+      
+
+    </ul>
+  </nav>
+</div>
+
+
+    <section id="search" class="content hidden"></section>
+
+    <footer>
+    
+    </footer>
+  </div>
+</body>
+</html>

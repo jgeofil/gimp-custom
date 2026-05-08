@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/jgf2/git/gimp-custom/app_build/.venv/bin/python3
 import sys
 import os
 import tempfile
@@ -59,6 +59,14 @@ class NanobananaInpaint(Gimp.PlugIn):
             GObject.ParamFlags.READWRITE
         )
 
+        procedure.add_string_argument(
+            "api-key",
+            "API Key",
+            "Your Gemini API Key. Will persist in GIMP's settings.",
+            "",
+            GObject.ParamFlags.READWRITE
+        )
+
         return procedure
 
     def run(self, procedure, run_mode, image, drawables, config, run_data):
@@ -69,149 +77,194 @@ class NanobananaInpaint(Gimp.PlugIn):
         if run_mode == Gimp.RunMode.INTERACTIVE:
             GimpUi.init("nanobanana-inpaint")
             dialog = GimpUi.ProcedureDialog.new(procedure, config, "Nanobanana Inpaint")
-            dialog.fill(["prompt"])
+            dialog.fill(["prompt", "api-key"])
             if not dialog.run():
                 dialog.destroy()
                 return procedure.new_return_values(Gimp.PDBStatusType.CANCEL, None)
             dialog.destroy()
 
         prompt = config.get_property("prompt")
-        
-        # We need an active API key
-        load_dotenv()
-        api_key = os.environ.get("GEMINI_API_KEY")
+        api_key = config.get_property("api-key")
+
+        # Fallback to environment variable if empty
         if not api_key:
-            Gimp.message("Error: GEMINI_API_KEY environment variable not found.")
+            load_dotenv()
+            api_key = os.environ.get("GEMINI_API_KEY")
+
+        if not api_key:
+            Gimp.message("Error: API Key is required. Please enter it in the plugin dialog or set the GEMINI_API_KEY environment variable.")
             return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR, GLib.Error())
 
         # Get active drawable
         if not drawables:
             Gimp.message("Error: No active drawable.")
             return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR, GLib.Error())
-        
+
         drawable = drawables[0]
 
-        # Check if there is a selection
-        is_sel, x, y, w, h = image.mask_intersect(drawable)
+        # Check if there is a selection — mask_intersect is on Drawable, not Image
+        is_sel, x, y, w, h = drawable.mask_intersect()
         if not is_sel:
             Gimp.message("Error: Please make a selection to indicate the inpainting area.")
             return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR, GLib.Error())
 
-        # We need to save the image and the mask to temporary files
+        Gimp.progress_init("Nanobanana Inpaint: Preparing...")
+
         temp_dir = tempfile.mkdtemp()
         img_path = os.path.join(temp_dir, "image.png")
-        mask_path = os.path.join(temp_dir, "mask.png")
         res_path = os.path.join(temp_dir, "result.png")
 
         try:
-            # Save the active drawable as PNG
-            img_file = Gio.File.new_for_path(img_path)
-            # Since GIMP 3.0, we use file_png_save. 
-            # Actually, using Gimp.get_pdb().run_procedure is safer if we don't know the exact signature
-            # But wait, we can just use Gegl to save the buffer or Gimp.file_save
-            Gimp.get_pdb().run_procedure("file-png-save", [
-                GObject.Value(Gimp.RunMode, Gimp.RunMode.NONINTERACTIVE),
-                GObject.Value(Gimp.Image, image),
-                GObject.Value(Gimp.Drawable, drawable),
-                GObject.Value(Gio.File, img_file),
-                GObject.Value(GObject.TYPE_BOOLEAN, False), # interlace
-                GObject.Value(GObject.TYPE_INT, 9),         # compression
-                GObject.Value(GObject.TYPE_BOOLEAN, True),  # bkgd
-                GObject.Value(GObject.TYPE_BOOLEAN, True),  # gamma
-                GObject.Value(GObject.TYPE_BOOLEAN, True),  # offs
-                GObject.Value(GObject.TYPE_BOOLEAN, True),  # phys
-                GObject.Value(GObject.TYPE_BOOLEAN, True),  # time
-            ])
-            
-            # Save the selection mask as PNG
-            mask = image.get_selection()
-            mask_file = Gio.File.new_for_path(mask_path)
-            Gimp.get_pdb().run_procedure("file-png-save", [
-                GObject.Value(Gimp.RunMode, Gimp.RunMode.NONINTERACTIVE),
-                GObject.Value(Gimp.Image, image),
-                GObject.Value(Gimp.Drawable, mask),
-                GObject.Value(Gio.File, mask_file),
-                GObject.Value(GObject.TYPE_BOOLEAN, False),
-                GObject.Value(GObject.TYPE_INT, 9),
-                GObject.Value(GObject.TYPE_BOOLEAN, True),
-                GObject.Value(GObject.TYPE_BOOLEAN, True),
-                GObject.Value(GObject.TYPE_BOOLEAN, True),
-                GObject.Value(GObject.TYPE_BOOLEAN, True),
-                GObject.Value(GObject.TYPE_BOOLEAN, True),
-            ])
+            # --- Step 1: Export the flattened image to a temp PNG ---
+            Gimp.progress_set_text("Exporting image...")
+            Gimp.progress_update(0.1)
 
-            # Initialize GenAI Client
+            dup_image = image.duplicate()
+            dup_layer = dup_image.flatten()
+
+            img_file = Gio.File.new_for_path(img_path)
+            Gimp.file_save(Gimp.RunMode.NONINTERACTIVE, dup_image, img_file, None)
+            dup_image.delete()
+
+            if not os.path.exists(img_path):
+                Gimp.message("Error: Failed to export the image to a temporary file.")
+                return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR, GLib.Error())
+
+            Gimp.progress_update(0.2)
+
+            # --- Step 2: Read image bytes for the API ---
+            Gimp.progress_set_text("Preparing API request...")
+            with open(img_path, "rb") as f:
+                image_bytes = f.read()
+
+            image_part = types.Part.from_bytes(
+                data=image_bytes,
+                mime_type="image/png",
+            )
+
+            full_prompt = (
+                f"Edit this image. In the rectangular region from pixel ({x},{y}) "
+                f"to ({x+w},{y+h}), please apply the following change: {prompt}. "
+                f"Keep everything outside that region exactly the same. "
+                f"Return only the edited image."
+            )
+
+            Gimp.progress_update(0.25)
+
+            # --- Step 3: Call Gemini generate_content ---
+            Gimp.progress_set_text("Waiting for Gemini AI response...")
             client = genai.Client(api_key=api_key)
 
-            Gimp.message("Sending request to Gemini (nanobanana)...")
-            
-            # We assume nanobanana works via edit_image or generate_content
-            # We will use edit_image and pass the reference images
-            raw_ref_image = types.RawReferenceImage(
-                reference_id=1,
-                reference_image=types.Image.from_file(img_path),
-            )
-            mask_ref_image = types.MaskReferenceImage(
-                reference_id=2,
-                config=types.MaskReferenceConfig(
-                    mask_mode='MASK_MODE_PROVIDED_IMAGE',
-                    mask_dilation=0,
-                ),
-            )
-            
-            # Note: We are using gemini-3-pro-image-preview here based on user context
-            response = client.models.edit_image(
-                model='gemini-3-pro-image-preview',
-                prompt=prompt,
-                reference_images=[raw_ref_image, mask_ref_image],
-                config=types.EditImageConfig(
-                    edit_mode='EDIT_MODE_INPAINT_INSERTION',
-                    number_of_images=1,
-                    include_rai_reason=True,
-                    output_mime_type='image/png',
-                ),
-            )
+            # Run the API call in a thread so we can pulse the progress bar
+            import threading
+            api_result = {"response": None, "error": None}
 
-            if not response.generated_images:
-                Gimp.message("Error: No images returned from the GenAI API.")
+            def call_api():
+                try:
+                    api_result["response"] = client.models.generate_content(
+                        model="gemini-3-pro-image-preview",
+                        contents=[full_prompt, image_part],
+                        config=types.GenerateContentConfig(
+                            response_modalities=["IMAGE"],
+                        ),
+                    )
+                except Exception as e:
+                    api_result["error"] = e
+
+            api_thread = threading.Thread(target=call_api)
+            api_thread.start()
+
+            # Pulse the progress bar while waiting for the API
+            while api_thread.is_alive():
+                Gimp.progress_pulse()
+                api_thread.join(timeout=0.3)
+
+            if api_result["error"]:
+                raise api_result["error"]
+
+            response = api_result["response"]
+
+            # --- Step 4: Extract and apply the result ---
+            Gimp.progress_set_text("Processing result...")
+            Gimp.progress_update(0.7)
+
+            # Find the image part in the response
+            result_image_data = None
+            if response.candidates and response.candidates[0].content and response.candidates[0].content.parts:
+                for part in response.candidates[0].content.parts:
+                    if part.inline_data is not None:
+                        result_image_data = part.inline_data.data
+                        break
+
+            if result_image_data is None:
+                if response.parts:
+                    for part in response.parts:
+                        if part.inline_data is not None:
+                            result_image_data = part.inline_data.data
+                            break
+
+            if result_image_data is None:
+                Gimp.message("Error: No image was returned from the GenAI API. The model may have refused the request.")
                 return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR, GLib.Error())
-                
-            res_path = os.path.join(temp_dir, "result.png")
-            response.generated_images[0].image.save(res_path)
 
-            # Load the result into GIMP
+            # Save result to temp file
+            with open(res_path, "wb") as f:
+                f.write(result_image_data)
+
+            Gimp.progress_update(0.8)
+            Gimp.progress_set_text("Loading result into GIMP...")
+
+            # Load result image into GIMP
             res_file = Gio.File.new_for_path(res_path)
             res_image = Gimp.file_load(Gimp.RunMode.NONINTERACTIVE, res_file)
             if not res_image:
                 Gimp.message("Error: Failed to load the result image into GIMP.")
                 return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR, GLib.Error())
 
-            res_drawable = res_image.get_active_layer()
+            # Scale result to match original if needed
+            res_w = res_image.get_width()
+            res_h = res_image.get_height()
+            orig_w = image.get_width()
+            orig_h = image.get_height()
+            if res_w != orig_w or res_h != orig_h:
+                res_image.scale(orig_w, orig_h)
+
+            Gimp.progress_update(0.9)
+
+            res_layers = res_image.get_selected_layers()
+            res_layer = res_layers[0] if res_layers else res_image.list_layers()[0]
 
             # Create a new layer in the original image
-            new_layer = Gimp.Layer.new(image, "Inpainting Result", 
-                                       drawable.get_width(), drawable.get_height(), 
-                                       drawable.type(), 100, Gimp.LayerMode.NORMAL)
+            image.undo_group_start()
+
+            new_layer = Gimp.Layer.new_from_drawable(res_layer, image)
+            new_layer.set_name("Inpainting Result")
             image.insert_layer(new_layer, None, -1)
 
-            # Copy buffer from result to new layer
-            src_buffer = res_drawable.get_buffer()
-            dest_buffer = new_layer.get_buffer()
-            dest_buffer.copy(src_buffer, None)
-            dest_buffer.flush()
+            # Clean up the temporary result image
+            res_image.delete()
 
             image.undo_group_end()
             Gimp.displays_flush()
 
+            Gimp.progress_update(1.0)
+            Gimp.progress_end()
+
         except Exception as e:
-            Gimp.message(f"Exception occurred: {str(e)}")
+            import traceback
+            tb = traceback.format_exc()
+            Gimp.message(f"Exception occurred: {str(e)}\n{tb}")
             return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR, GLib.Error())
         finally:
             # Clean up temp files
-            for f in [img_path, mask_path, res_path]:
+            for f in [img_path, res_path]:
                 if os.path.exists(f):
                     os.remove(f)
-            os.rmdir(temp_dir)
+            if os.path.exists(temp_dir):
+                try:
+                    os.rmdir(temp_dir)
+                except OSError:
+                    pass
 
         return procedure.new_return_values(Gimp.PDBStatusType.SUCCESS, GLib.Error())
 

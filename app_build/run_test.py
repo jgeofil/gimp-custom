@@ -1,5 +1,12 @@
-import tests.test_integration
+from tests.test_integration import test_plugin_registration_and_execution_in_gimp
+
+# Run the plugin test (integration test)
 try:
-    tests.test_integration.test_plugin_registration_and_execution_in_gimp()
+    test_plugin_registration_and_execution_in_gimp()
 except Exception as e:
     pass
+
+import pytest
+
+# Run all tests
+pytest.main()

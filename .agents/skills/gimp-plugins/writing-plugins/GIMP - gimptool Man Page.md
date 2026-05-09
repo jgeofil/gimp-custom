@@ -6,16 +6,17 @@ published:
 created: 2026-05-07
 description: "NAME¶ gimptool - script to perform various GIMPy functions SYNOPSIS¶ gimptool [—prefix[=DIR]] [—exec-prefix[=DIR]] [—version] [—help] [—quiet] [—silent] [-n] [—just-print] [—dry-run] [—recon] [—msvc-syntax] [—bindir] [—sbindir] [—libexecdir] [—datadir] [—sysconfdir] [—sharedstatedir] [—localstatedir] [—libdir] [—infodir] [—mandir] [—includedir] [—gimpplugindir] [—gimpdatadir] [—libs] [—libs-noui] [—cflags] [—cflags-noi] [—build plug-in.c] [—build-strip plug-in.c] [—install plug-in.c] [—install-strip …"
 tags:
-  - "gimptool"
-  - "gimp-plugin-development"
-  - "cli-tool"
-  - "software-compilation"
-  - "linux-man-page"
-  - "build-automation"
-  - "plugin-installation"
-  - "gimp-scripts"
+    - "gimptool"
+    - "gimp-plugin-development"
+    - "cli-tool"
+    - "software-compilation"
+    - "linux-man-page"
+    - "build-automation"
+    - "plugin-installation"
+    - "gimp-scripts"
 category: "general"
 ---
+
 ## gimptool Man Page
 
 ## NAME
@@ -24,31 +25,31 @@ gimptool - script to perform various GIMPy functions
 
 ## SYNOPSIS
 
-**gimptool** \[—prefix *\[=DIR\]*\] \[—exec-prefix *\[=DIR\]*\] \[—version\] \[—help\] \[—quiet\] \[—silent\] \[-n\] \[—just-print\] \[—dry-run\] \[—recon\] \[—msvc-syntax\] \[—bindir\] \[—sbindir\] \[—libexecdir\] \[—datadir\] \[—sysconfdir\] \[—sharedstatedir\] \[—localstatedir\] \[—libdir\] \[—infodir\] \[—mandir\] \[—includedir\] \[—gimpplugindir\] \[—gimpdatadir\] \[—libs\] \[—libs-noui\] \[—cflags\] \[—cflags-noi\] \[—build *plug-in.c*\] \[—build-strip *plug-in.c*\] \[—install *plug-in.c*\] \[—install-strip *plug-in.c*\] \[—install-admin *plug-in.c*\] \[—install-bin *plug-in*\] \[—install-admin-strip *plug-in.c*\] \[—install-bin-strip *plug-in*\] \[—install-admin-bin *plug-in*\] \[—install-script *script.scm*\] \[—install-admin-script *script.scm*\] \[—uninstall-bin *plug-in*\] \[—uninstall-admin-bin *plug-in*\] \[—uninstall-script *script.scm*\] \[—uninstall-admin-script *script.scm*\]
+**gimptool** \[—prefix _\[=DIR\]_\] \[—exec-prefix _\[=DIR\]_\] \[—version\] \[—help\] \[—quiet\] \[—silent\] \[-n\] \[—just-print\] \[—dry-run\] \[—recon\] \[—msvc-syntax\] \[—bindir\] \[—sbindir\] \[—libexecdir\] \[—datadir\] \[—sysconfdir\] \[—sharedstatedir\] \[—localstatedir\] \[—libdir\] \[—infodir\] \[—mandir\] \[—includedir\] \[—gimpplugindir\] \[—gimpdatadir\] \[—libs\] \[—libs-noui\] \[—cflags\] \[—cflags-noi\] \[—build _plug-in.c_\] \[—build-strip _plug-in.c_\] \[—install _plug-in.c_\] \[—install-strip _plug-in.c_\] \[—install-admin _plug-in.c_\] \[—install-bin _plug-in_\] \[—install-admin-strip _plug-in.c_\] \[—install-bin-strip _plug-in_\] \[—install-admin-bin _plug-in_\] \[—install-script _script.scm_\] \[—install-admin-script _script.scm_\] \[—uninstall-bin _plug-in_\] \[—uninstall-admin-bin _plug-in_\] \[—uninstall-script _script.scm_\] \[—uninstall-admin-script _script.scm_\]
 
 ## DESCRIPTION
 
-*gimptool* is a tool that can, among other things, build plug-ins or scripts and install them if they are distributed in one source file.
+_gimptool_ is a tool that can, among other things, build plug-ins or scripts and install them if they are distributed in one source file.
 
-*gimptool* can also be used by programs that need to know what libraries and include-paths *GIMP* was compiled with. *gimptool* uses *pkg-config* for this task. For use in Makefiles, it is recommended that you use *pkg-config* directly instead of calling *gimptool*.
+_gimptool_ can also be used by programs that need to know what libraries and include-paths _GIMP_ was compiled with. _gimptool_ uses _pkg-config_ for this task. For use in Makefiles, it is recommended that you use _pkg-config_ directly instead of calling _gimptool_.
 
 ## OPTIONS
 
-*gimptool* accepts the following options:
+_gimptool_ accepts the following options:
 
-**—version**
+**version**
 
-Print the currently installed version of *GIMP* on the standard output.
+Print the currently installed version of _GIMP_ on the standard output.
 
-**—help**
+**help**
 
 Print out the help blurb, showing commonly used commandline options.
 
-**—quiet**
+**quiet**
 
 Run quietly without echoing any of the build commands.
 
-**—silent**
+**silent**
 
 Run silently without echoing any of the build commands. Same as —quiet.
 
@@ -56,157 +57,157 @@ Run silently without echoing any of the build commands. Same as —quiet.
 
 Test mode. Print the commands but don't actually execute them. Useful for making dry runs for testing.
 
-**—just-print**
+**just-print**
 
 Test mode. Print the commands but don't actually execute them. Same as -n.
 
-**—dry-run**
+**dry-run**
 
 Test mode. Print the commands but don't actually execute them. Same as -n.
 
-**—recon**
+**recon**
 
 Test mode. Print the commands but don't actually execute them. Same as -n.
 
-**—msvc-syntax**
+**msvc-syntax**
 
-Useful on Windows. Outputs the compiler and linker flags in the syntax used by Microsoft's toolchain. Passed to the pkg-config command that does most of *gimptool* 's work.
+Useful on Windows. Outputs the compiler and linker flags in the syntax used by Microsoft's toolchain. Passed to the pkg-config command that does most of _gimptool_ 's work.
 
-**—bindir**
+**bindir**
 
-Outputs the bindir used to install the *GIMP*.
+Outputs the bindir used to install the _GIMP_.
 
-**—sbindir**
+**sbindir**
 
-Outputs the sbindir used to install the *GIMP*.
+Outputs the sbindir used to install the _GIMP_.
 
-**—libexecdir**
+**libexecdir**
 
-Outputs the libexecdir used to install the *GIMP*.
+Outputs the libexecdir used to install the _GIMP_.
 
-**—datadir**
+**datadir**
 
-Outputs the datadir used to install the *GIMP*.
+Outputs the datadir used to install the _GIMP_.
 
-**—sysconfdir**
+**sysconfdir**
 
-Outputs the sysconfdir used to install the *GIMP*.
+Outputs the sysconfdir used to install the _GIMP_.
 
-**—sharedstatedir**
+**sharedstatedir**
 
-Outputs the sharedstatedir used to install the *GIMP*.
+Outputs the sharedstatedir used to install the _GIMP_.
 
-**—localstatedir**
+**localstatedir**
 
-Outputs the localstatedir used to install the *GIMP*.
+Outputs the localstatedir used to install the _GIMP_.
 
-**—libdir**
+**libdir**
 
-Outputs the libdir used to install the *GIMP*.
+Outputs the libdir used to install the _GIMP_.
 
-**—infodir**
+**infodir**
 
-Outputs the infodir used to install the *GIMP*.
+Outputs the infodir used to install the _GIMP_.
 
-**—mandir**
+**mandir**
 
-Outputs the mandir used to install the *GIMP*.
+Outputs the mandir used to install the _GIMP_.
 
-**—includedir**
+**includedir**
 
-Outputs the includedir used to install the *GIMP*.
+Outputs the includedir used to install the _GIMP_.
 
-**—gimpdatadir**
+**gimpdatadir**
 
-Outputs the actual directory where the *GIMP* data files were installed.
+Outputs the actual directory where the _GIMP_ data files were installed.
 
-**—gimpplugindir**
+**gimpplugindir**
 
-Outputs the actual directory where the *GIMP* plug-ins were installed.
+Outputs the actual directory where the _GIMP_ plug-ins were installed.
 
-**—build *plug-in.c***
+**build _plug-in.c_**
 
-Compile and link *plug-in.c* into a *GIMP* plug-in.
+Compile and link _plug-in.c_ into a _GIMP_ plug-in.
 
-**—build-strip *plug-in.c***
+**build-strip _plug-in.c_**
 
-Compile,link, and strip *plug-in.c* into a *GIMP* plug-in.
+Compile,link, and strip _plug-in.c_ into a _GIMP_ plug-in.
 
-**—install *plug-in.c***
+**install _plug-in.c_**
 
-Compile, link, and install *plug-in.c* into the user's personal *GIMP* plug-in directory (\\$XDG\_CONFIG\_HOME/GIMP/3.2/plug-ins)
+Compile, link, and install _plug-in.c_ into the user's personal _GIMP_ plug-in directory (\\$XDG_CONFIG_HOME/GIMP/3.2/plug-ins)
 
-**—install-strip *plug-in.c***
+**install-strip _plug-in.c_**
 
-Compile, link,strip, and install *plug-in.c* into the user's personal *GIMP* plug-in directory (\\$XDG\_CONFIG\_HOME/GIMP/3.2/plug-ins)
+Compile, link,strip, and install _plug-in.c_ into the user's personal _GIMP_ plug-in directory (\\$XDG_CONFIG_HOME/GIMP/3.2/plug-ins)
 
-**—install-admin *plug-in.c***
+**install-admin _plug-in.c_**
 
-Compile, link, and install *plug-in.c* into the system-wide *GIMP* plug-in directory (/usr/lib64/gimp/3.0/plug-ins)
+Compile, link, and install _plug-in.c_ into the system-wide _GIMP_ plug-in directory (/usr/lib64/gimp/3.0/plug-ins)
 
-**—install-bin *plug-in***
+**install-bin _plug-in_**
 
-Install *plug-in* into the user's personal *GIMP* plug-in directory (\\$XDG\_CONFIG\_HOME/GIMP/3.2/plug-ins)
+Install _plug-in_ into the user's personal _GIMP_ plug-in directory (\\$XDG_CONFIG_HOME/GIMP/3.2/plug-ins)
 
-**—install-admin-bin *plug-in***
+**install-admin-bin _plug-in_**
 
-Install *plug-in* into the system-wide *GIMP* plug-in directory (/usr/lib64/gimp/3.0/plug-ins)
+Install _plug-in_ into the system-wide _GIMP_ plug-in directory (/usr/lib64/gimp/3.0/plug-ins)
 
-**—install-bin-strip *plug-in***
+**install-bin-strip _plug-in_**
 
-Install stripped *plug-in* into the user's personal *GIMP* plug-in directory (\\$XDG\_CONFIG\_HOME/GIMP/3.2/plug-ins)
+Install stripped _plug-in_ into the user's personal _GIMP_ plug-in directory (\\$XDG_CONFIG_HOME/GIMP/3.2/plug-ins)
 
-**—install-admin-bin-strip *plug-in***
+**install-admin-bin-strip _plug-in_**
 
-Install stripped *plug-in* into the system-wide *GIMP* plug-in directory (/usr/lib64/gimp/3.0/plug-ins)
+Install stripped _plug-in_ into the system-wide _GIMP_ plug-in directory (/usr/lib64/gimp/3.0/plug-ins)
 
-**—install-script *script.scm***
+**install-script _script.scm_**
 
-Install *script.scm* into the user's personal *GIMP* script directory (\\$XDG\_CONFIG\_HOME/GIMP/3.2/scripts)
+Install _script.scm_ into the user's personal _GIMP_ script directory (\\$XDG_CONFIG_HOME/GIMP/3.2/scripts)
 
-**—install-admin-script *script.scm***
+**install-admin-script _script.scm_**
 
-Install *script.scm* into the system-wide *GIMP* script directory (/usr/share/gimp/3.0/scripts)
+Install _script.scm_ into the system-wide _GIMP_ script directory (/usr/share/gimp/3.0/scripts)
 
-**—uninstall-bin *plug-in***
+**uninstall-bin _plug-in_**
 
-Uninstall *plug-in* from the user's personal *GIMP* plug-in directory (\\$XDG\_CONFIG\_HOME/GIMP/3.2/plug-ins)
+Uninstall _plug-in_ from the user's personal _GIMP_ plug-in directory (\\$XDG_CONFIG_HOME/GIMP/3.2/plug-ins)
 
-**—uninstall-admin-bin *plug-in***
+**uninstall-admin-bin _plug-in_**
 
-Uninstall *plug-in* from the system-wide *GIMP* plug-in directory (/usr/lib64/gimp/3.0/plug-ins)
+Uninstall _plug-in_ from the system-wide _GIMP_ plug-in directory (/usr/lib64/gimp/3.0/plug-ins)
 
-**—uninstall-script *script.scm***
+**uninstall-script _script.scm_**
 
-Uninstall *script.scm* from the user's personal *GIMP* script directory (\\$XDG\_CONFIG\_HOME/GIMP/3.2/scripts)
+Uninstall _script.scm_ from the user's personal _GIMP_ script directory (\\$XDG_CONFIG_HOME/GIMP/3.2/scripts)
 
-**—uninstall-admin-script *script.scm***
+**uninstall-admin-script _script.scm_**
 
-Uninstall *script.scm* from the system-wide *GIMP* script directory (/usr/share/gimp/3.0/scripts)
+Uninstall _script.scm_ from the system-wide _GIMP_ script directory (/usr/share/gimp/3.0/scripts)
 
-**—libs**
+**libs**
 
-Print the linker flags that are necessary to link a *GIMP* plug-in.
+Print the linker flags that are necessary to link a _GIMP_ plug-in.
 
-**—libs-noui**
+**libs-noui**
 
-Print the linker flags that are necessary to link a *GIMP* plug-in, for plug-ins that do not require the GTK libraries.
+Print the linker flags that are necessary to link a _GIMP_ plug-in, for plug-ins that do not require the GTK libraries.
 
-**—cflags**
+**cflags**
 
-Print the compiler flags that are necessary to compile a *GIMP* plug-in.
+Print the compiler flags that are necessary to compile a _GIMP_ plug-in.
 
-**—clags-noui**
+**clags-noui**
 
-Print the compiler flags that are necessary to compile a *GIMP* plug-in for plug-ins that do not require the GTK libraries.
+Print the compiler flags that are necessary to compile a _GIMP_ plug-in for plug-ins that do not require the GTK libraries.
 
-**—prefix=PREFIX**
+**prefix=PREFIX**
 
-If specified, use PREFIX instead of the installation prefix that *GIMP* was built with when computing the output for the —cflags and —libs options. This option is also used for the exec prefix if —exec-prefix was not specified. This option must be specified before any —libs or —cflags options.
+If specified, use PREFIX instead of the installation prefix that _GIMP_ was built with when computing the output for the —cflags and —libs options. This option is also used for the exec prefix if —exec-prefix was not specified. This option must be specified before any —libs or —cflags options.
 
-**—exec-prefix=PREFIX**
+**exec-prefix=PREFIX**
 
-If specified, use PREFIX instead of the installation exec prefix that *GIMP* was built with when computing the output for the —cflags and —libs options. This option must be specified before any —libs or —cflags options.
+If specified, use PREFIX instead of the installation exec prefix that _GIMP_ was built with when computing the output for the —cflags and —libs options. This option must be specified before any —libs or —cflags options.
 
 ## ENVIRONMENT
 
@@ -226,9 +227,9 @@ to get the preferred flags for passing to the linker.
 
 for passing extra libs that may be needed in the build process. For example, LIBS=-lintl.
 
-**PKG\_CONFIG**
+**PKG_CONFIG**
 
-to get the location of the *pkg-config* program that is used to determine details about your glib, pango, gtk and gimp installation.
+to get the location of the _pkg-config_ program that is used to determine details about your glib, pango, gtk and gimp installation.
 
 ## SEE ALSO
 

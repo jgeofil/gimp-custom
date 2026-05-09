@@ -3,8 +3,22 @@ name            = "gimp-custom"
 version         = "0.1.0"
 description     = "A collection of GIMP plugins that make use of generative ai models, image editing, and more"
 readme          = "README.md"
-requires-python = ">=3.14.0"
-dependencies    = ["google-genai>=2.0.0", "pygobject>=3.56.2", "python-dotenv>=1.2.2"]
+requires-python = ">=3.14.3"
+dependencies    = ["google-genai>=2.0.0", "pygobject>=3.56.2", "pytest>=9.0.3", "python-dotenv>=1.2.2"]
 
 [dependency-groups]
 dev = ["pytest>=7.4.0", "requests>=2.31.0", "pygobject-stubs>=2.17.0"]
+
+[tool.pyright]
+venvPath                       = ".."
+include                        = ["."]
+exclude                        = ["**/node_modules", "**/__pycache__"]
+defineConstant                 = {DEBUG = true}
+reportMissingTypeStubs         = false
+reportMissingOverrideDecorator = false
+reportMissingImports           = false
+venv                           = ".venv"
+pythonVersion                  = "3.14"
+pythonPlatform                 = "Linux"
+
+executionEnvironments = [{root = ".", pythonVersion = "3.14", virtualEnvironment = {venvPath = "..", venv = ".venv"}}]

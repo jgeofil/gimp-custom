@@ -1,28 +1,32 @@
 #!/home/jgf2/git/gimp-custom/app_build/.venv/bin/python3
 """Nanobanana — GIMP 3.2 GenAI plugin suite: Inpaint & Background Removal."""
 
-import sys
 import os
+import sys
 import tempfile
 import threading
 import time
-from dotenv import load_dotenv
 
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    load_dotenv = None
 import gi
+
 gi.require_version("Gimp", "3.0")
-from gi.repository import Gimp
+from gi.repository import Gimp  # noqa: E402 # missing-override-decorator
 
 gi.require_version("GimpUi", "3.0")
-from gi.repository import GimpUi
+from gi.repository import GimpUi  # noqa: E402 # missing-override-decorator
 
 gi.require_version("GLib", "2.0")
-from gi.repository import GLib
+from gi.repository import GLib  # noqa: E402 # missing-override-decorator
 
 gi.require_version("GObject", "2.0")
-from gi.repository import GObject
+from gi.repository import GObject  # noqa: E402 # missing-override-decorator
 
 gi.require_version("Gio", "2.0")
-from gi.repository import Gio
+from gi.repository import Gio  # noqa: E402 # missing-override-decorator
 
 try:
     from google import genai
@@ -37,12 +41,9 @@ JPEG_THRESHOLD_PIXELS = 9_000_000
 
 # Known image-capable models (fallback if API list unavailable)
 KNOWN_MODELS = [
-    ("gemini-2.0-flash-preview-image-generation",
-     "Gemini 2.0 Flash (Image Gen Preview)"),
-    ("gemini-3-pro-image-preview",
-     "Gemini 3 Pro (Image Preview)"),
-    ("gemini-2.0-flash",
-     "Gemini 2.0 Flash"),
+    ("gemini-2.0-flash-preview-image-generation", "Gemini 2.0 Flash (Image Gen Preview)"),
+    ("gemini-3-pro-image-preview", "Gemini 3 Pro (Image Preview)"),
+    ("gemini-2.0-flash", "Gemini 2.0 Flash"),
 ]
 
 # Cache for dynamically fetched models
@@ -66,7 +67,7 @@ def _fetch_image_models(api_key):
             if "generateContent" in actions or "generateContent" in methods:
                 name = m.name
                 # Strip 'models/' prefix if present
-                if name.startswith("models/"):
+                if name is not None and name.startswith("models/"):
                     name = name[7:]
                 display = getattr(m, "display_name", name) or name
                 models.append((name, display))
@@ -87,20 +88,22 @@ def _build_model_choice(api_key):
     model_list = dynamic if dynamic else KNOWN_MODELS
 
     for i, (nick, label) in enumerate(model_list):
-        choice.add(nick, i, label, None)
+        choice.add(nick, i, label, "")
 
     return choice
 
 
 def _get_api_key():
     """Try to load API key from environment."""
-    load_dotenv()
+    if load_dotenv:
+        load_dotenv()
     return os.environ.get("GEMINI_API_KEY", "")
 
 
 # ------------------------------------------------------------------
 # Shared helpers
 # ------------------------------------------------------------------
+
 
 def compute_crop_bounds(image, sx, sy, sw, sh):
     """Return padded crop bounds (x, y, w, h) clamped to image size."""
@@ -129,8 +132,7 @@ def export_image(image, crop_bounds=None):
         ext, mime = "png", "image/png"
 
     path = os.path.join(tempfile.gettempdir(), f"nb_src_{os.getpid()}.{ext}")
-    Gimp.file_save(Gimp.RunMode.NONINTERACTIVE, dup,
-                   Gio.File.new_for_path(path), None)
+    Gimp.file_save(Gimp.RunMode.NONINTERACTIVE, dup, Gio.File.new_for_path(path), None)
     dup.delete()
 
     with open(path, "rb") as f:
@@ -153,8 +155,7 @@ def export_mask(image, crop_bounds=None):
         mask_img.crop(bw, bh, bx, by)
 
     path = os.path.join(tempfile.gettempdir(), f"nb_mask_{os.getpid()}.png")
-    Gimp.file_save(Gimp.RunMode.NONINTERACTIVE, mask_img,
-                   Gio.File.new_for_path(path), None)
+    Gimp.file_save(Gimp.RunMode.NONINTERACTIVE, mask_img, Gio.File.new_for_path(path), None)
     mask_img.delete()
 
     with open(path, "rb") as f:
@@ -169,24 +170,22 @@ def api_call_with_retry(client, model, contents, gen_config):
     for attempt in range(1, MAX_RETRIES + 1):
         try:
             return client.models.generate_content(
-                model=model, contents=contents, config=gen_config,
+                model=model,
+                contents=contents,
+                config=gen_config,
             )
         except Exception as e:
             last_err = e
             code = str(e)
             if any(c in code for c in ("429", "500", "503")) and attempt < MAX_RETRIES:
-                wait = 2 ** attempt
-                Gimp.progress_set_text(
-                    f"Retrying in {wait}s (attempt {attempt}/{MAX_RETRIES})…"
-                )
-                Gimp.message(
-                    f"Transient API error — retrying in {wait}s "
-                    f"(attempt {attempt}/{MAX_RETRIES}): {e}"
-                )
+                wait = 2**attempt
+                Gimp.progress_set_text(f"Retrying in {wait}s (attempt {attempt}/{MAX_RETRIES})…")
+                Gimp.message(f"Transient API error — retrying in {wait}s (attempt {attempt}/{MAX_RETRIES}): {e}")
                 time.sleep(wait)
                 continue
             raise
-    raise last_err
+    if last_err is not None:
+        raise last_err
 
 
 def extract_image_data(response):
@@ -205,13 +204,15 @@ def extract_image_data(response):
 
 def threaded_api_call(api_func):
     """Run api_func in a thread while pulsing the GIMP progress bar."""
-    result = {"value": None, "error": None}
+    value = None
+    error = None
 
     def target():
+        nonlocal value, error
         try:
-            result["value"] = api_func()
+            value = api_func()
         except Exception as e:
-            result["error"] = e
+            error = e
 
     t = threading.Thread(target=target)
     t.start()
@@ -219,22 +220,18 @@ def threaded_api_call(api_func):
         Gimp.progress_pulse()
         t.join(timeout=0.3)
 
-    if result["error"]:
-        raise result["error"]
-    return result["value"]
+    if error is not None:
+        raise error
+    return value
 
 
-def load_result_as_layer(image, result_data, layer_name,
-                         target_w, target_h, offset_x, offset_y,
-                         apply_offset):
+def load_result_as_layer(image, result_data, layer_name, target_w, target_h, offset_x, offset_y, apply_offset):
     """Save API result bytes, load into GIMP, insert as a new layer."""
     res_path = os.path.join(tempfile.gettempdir(), f"nb_res_{os.getpid()}.png")
     with open(res_path, "wb") as f:
         f.write(result_data)
 
-    res_image = Gimp.file_load(
-        Gimp.RunMode.NONINTERACTIVE, Gio.File.new_for_path(res_path)
-    )
+    res_image = Gimp.file_load(Gimp.RunMode.NONINTERACTIVE, Gio.File.new_for_path(res_path))
     os.remove(res_path)
 
     if not res_image:
@@ -264,8 +261,8 @@ def load_result_as_layer(image, result_data, layer_name,
 # Plugin class — registers both procedures
 # ==================================================================
 
-class NanobananaInpaint(Gimp.PlugIn):
 
+class NanobananaInpaint(Gimp.PlugIn):
     def do_query_procedures(self):
         return ["nanobanana-inpaint", "nanobanana-remove-bg"]
 
@@ -287,49 +284,61 @@ class NanobananaInpaint(Gimp.PlugIn):
     # ------------------------------------------------------------------
 
     def _create_inpaint_procedure(self, name, env_key):
-        procedure = Gimp.ImageProcedure.new(
-            self, name, Gimp.PDBProcType.PLUGIN, self.run_inpaint, None
-        )
+        procedure = Gimp.ImageProcedure.new(self, name, Gimp.PDBProcType.PLUGIN, self.run_inpaint, None)
         procedure.set_image_types("*")
         procedure.set_menu_label("Nanobanana Inpaint…")
         procedure.add_menu_path("<Image>/Filters/GenAI/")
         procedure.set_documentation(
             "Inpaint selection using GenAI",
-            "Uses the Gemini API with a mask generated from the current "
-            "selection to inpaint the image.",
+            "Uses the Gemini API with a mask generated from the current selection to inpaint the image.",
             name,
         )
         procedure.set_attribution("Autonomous Developer", "Autonomous Developer", "2026")
 
         procedure.add_string_argument(
-            "prompt", "Prompt",
+            "prompt",
+            "Prompt",
             "Describe what to generate in the selected area",
-            "", GObject.ParamFlags.READWRITE,
+            "",
+            GObject.ParamFlags.READWRITE,
         )
         procedure.add_choice_argument(
-            "model", "Model", "Gemini model to use",
-            _build_model_choice(env_key), DEFAULT_MODEL,
+            "model",
+            "Model",
+            "Gemini model to use",
+            _build_model_choice(env_key),
+            DEFAULT_MODEL,
             GObject.ParamFlags.READWRITE,
         )
         procedure.add_boolean_argument(
-            "crop-context", "Crop to Selection",
+            "crop-context",
+            "Crop to Selection",
             "Send only the selection area (+ padding) for faster processing",
-            False, GObject.ParamFlags.READWRITE,
+            False,
+            GObject.ParamFlags.READWRITE,
         )
         procedure.add_boolean_argument(
-            "position-layer", "Position Result at Selection",
+            "position-layer",
+            "Position Result at Selection",
             "Place the result at the selection offset",
-            True, GObject.ParamFlags.READWRITE,
+            True,
+            GObject.ParamFlags.READWRITE,
         )
         procedure.add_int_argument(
-            "creativity", "Creativity",
+            "creativity",
+            "Creativity",
             "0 = conservative, 100 = very creative",
-            0, 100, 40, GObject.ParamFlags.READWRITE,
+            0,
+            100,
+            40,
+            GObject.ParamFlags.READWRITE,
         )
         procedure.add_string_argument(
-            "api-key", "API Key",
+            "api-key",
+            "API Key",
             "Gemini API Key (persists in GIMP settings)",
-            "", GObject.ParamFlags.READWRITE,
+            "",
+            GObject.ParamFlags.READWRITE,
         )
         return procedure
 
@@ -342,8 +351,12 @@ class NanobananaInpaint(Gimp.PlugIn):
             GimpUi.init("nanobanana-inpaint")
             dialog = GimpUi.ProcedureDialog.new(procedure, config, "Nanobanana Inpaint")
             dialog.fill([
-                "prompt", "model", "crop-context",
-                "position-layer", "creativity", "api-key",
+                "prompt",
+                "model",
+                "crop-context",
+                "position-layer",
+                "creativity",
+                "api-key",
             ])
             if not dialog.run():
                 dialog.destroy()
@@ -409,7 +422,8 @@ class NanobananaInpaint(Gimp.PlugIn):
 
             response = threaded_api_call(
                 lambda: api_call_with_retry(
-                    client, model,
+                    client,
+                    model,
                     [text_prompt, img_part, mask_part],
                     gen_config,
                 )
@@ -434,14 +448,20 @@ class NanobananaInpaint(Gimp.PlugIn):
                 ox, oy = 0, 0
 
             load_result_as_layer(
-                image, result_data, "Inpainting Result",
-                tw, th, ox, oy,
+                image,
+                result_data,
+                "Inpainting Result",
+                tw,
+                th,
+                ox,
+                oy,
                 apply_offset=(crop_context or position_layer),
             )
             Gimp.progress_update(1.0)
 
         except Exception as e:
             import traceback
+
             Gimp.message(f"Exception: {e}\n{traceback.format_exc()}")
             return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR, GLib.Error())
         finally:
@@ -454,38 +474,39 @@ class NanobananaInpaint(Gimp.PlugIn):
     # ------------------------------------------------------------------
 
     def _create_remove_bg_procedure(self, name, env_key):
-        procedure = Gimp.ImageProcedure.new(
-            self, name, Gimp.PDBProcType.PLUGIN, self.run_remove_bg, None
-        )
+        procedure = Gimp.ImageProcedure.new(self, name, Gimp.PDBProcType.PLUGIN, self.run_remove_bg, None)
         procedure.set_image_types("*")
-        procedure.set_sensitivity_mask(
-            Gimp.ProcedureSensitivityMask.DRAWABLE
-            | Gimp.ProcedureSensitivityMask.NO_DRAWABLES
-        )
+        procedure.set_sensitivity_mask(Gimp.ProcedureSensitivityMask.DRAWABLE | Gimp.ProcedureSensitivityMask.NO_DRAWABLES)
         procedure.set_menu_label("Nanobanana Remove Background…")
         procedure.add_menu_path("<Image>/Filters/GenAI/")
         procedure.set_documentation(
             "Remove background using GenAI",
-            "Uses the Gemini API to remove the background from the image "
-            "and return a transparent result as a new layer.",
+            "Uses the Gemini API to remove the background from the image and return a transparent result as a new layer.",
             name,
         )
         procedure.set_attribution("Autonomous Developer", "Autonomous Developer", "2026")
 
         procedure.add_choice_argument(
-            "model", "Model", "Gemini model to use",
-            _build_model_choice(env_key), DEFAULT_MODEL,
+            "model",
+            "Model",
+            "Gemini model to use",
+            _build_model_choice(env_key),
+            DEFAULT_MODEL,
             GObject.ParamFlags.READWRITE,
         )
         procedure.add_string_argument(
-            "subject", "Subject Hint (optional)",
+            "subject",
+            "Subject Hint (optional)",
             "Optionally describe the subject to keep (e.g. 'the person', 'the cat')",
-            "", GObject.ParamFlags.READWRITE,
+            "",
+            GObject.ParamFlags.READWRITE,
         )
         procedure.add_string_argument(
-            "api-key", "API Key",
+            "api-key",
+            "API Key",
             "Gemini API Key (persists in GIMP settings)",
-            "", GObject.ParamFlags.READWRITE,
+            "",
+            GObject.ParamFlags.READWRITE,
         )
         return procedure
 
@@ -548,7 +569,10 @@ class NanobananaInpaint(Gimp.PlugIn):
 
             response = threaded_api_call(
                 lambda: api_call_with_retry(
-                    client, model, [text_prompt, img_part], gen_config,
+                    client,
+                    model,
+                    [text_prompt, img_part],
+                    gen_config,
                 )
             )
 
@@ -564,14 +588,20 @@ class NanobananaInpaint(Gimp.PlugIn):
             Gimp.progress_set_text("Loading result into GIMP…")
 
             load_result_as_layer(
-                image, result_data, "Background Removed",
-                image.get_width(), image.get_height(),
-                0, 0, apply_offset=False,
+                image,
+                result_data,
+                "Background Removed",
+                image.get_width(),
+                image.get_height(),
+                0,
+                0,
+                apply_offset=False,
             )
             Gimp.progress_update(1.0)
 
         except Exception as e:
             import traceback
+
             Gimp.message(f"Exception: {e}\n{traceback.format_exc()}")
             return procedure.new_return_values(Gimp.PDBStatusType.EXECUTION_ERROR, GLib.Error())
         finally:

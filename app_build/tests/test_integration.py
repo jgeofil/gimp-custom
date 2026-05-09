@@ -9,7 +9,8 @@ import pytest
 def test_plugin_registration_and_execution_in_gimp():
     # Find gimp executable
     gimp_exe = shutil.which("gimp-console-3.0") or shutil.which("gimp")
-    
+    assert gimp_exe is not None, "GIMP executable not found"
+
     # We will create a temporary directory to act as the GIMP profile
     # so we can safely inject our plugin without messing with the user's setup.
     with tempfile.TemporaryDirectory(dir=os.path.dirname(os.path.abspath(__file__))) as tmpdir:

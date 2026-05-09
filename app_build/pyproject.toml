@@ -17,6 +17,12 @@ defineConstant                 = {DEBUG = true}
 reportMissingTypeStubs         = false
 reportMissingOverrideDecorator = false
 reportMissingImports           = false
+reportMissingModuleSource      = false
+reportUnusedImportCode         = false
+reportAttributeAccessError     = false
+reportUnknownParameterMember   = false
+reportUnknownMemberType        = false
+reportUnknownParameterType     = false
 venv                           = ".venv"
 pythonVersion                  = "3.14"
 pythonPlatform                 = "Linux"

@@ -14,19 +14,19 @@ except ImportError:
 import gi
 
 gi.require_version("Gimp", "3.0")
-from gi.repository import Gimp  # noqa: E402 # missing-override-decorator
+from gi.repository import Gimp  # noqa: E402
 
 gi.require_version("GimpUi", "3.0")
-from gi.repository import GimpUi  # noqa: E402 # missing-override-decorator
+from gi.repository import GimpUi  # noqa: E402
 
 gi.require_version("GLib", "2.0")
-from gi.repository import GLib  # noqa: E402 # missing-override-decorator
+from gi.repository import GLib  # noqa: E402
 
 gi.require_version("GObject", "2.0")
-from gi.repository import GObject  # noqa: E402 # missing-override-decorator
+from gi.repository import GObject  # noqa: E402
 
 gi.require_version("Gio", "2.0")
-from gi.repository import Gio  # noqa: E402 # missing-override-decorator
+from gi.repository import Gio  # noqa: E402
 
 try:
     from google import genai
